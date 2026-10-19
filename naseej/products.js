@@ -1,0 +1,51 @@
+// Sample catalog. Replace with real data or an API call when a backend exists.
+const PRODUCTS = [
+  {
+    id: "linen-shirt",
+    name: "Linen Overshirt",
+    category: "Men",
+    price: 85,
+    color: "#c9b99a",
+    description: "Relaxed-fit overshirt in breathable 100% European linen.",
+  },
+  {
+    id: "silk-scarf",
+    name: "Silk Jacquard Scarf",
+    category: "Accessories",
+    price: 45,
+    color: "#8c3b3b",
+    description: "Lightweight mulberry silk with a woven geometric pattern.",
+  },
+  {
+    id: "wool-coat",
+    name: "Merino Wool Coat",
+    category: "Women",
+    price: 240,
+    color: "#3d4f63",
+    description: "Tailored single-breasted coat in fine merino wool.",
+  },
+  {
+    id: "cotton-tee",
+    name: "Organic Cotton Tee",
+    category: "Men",
+    price: 32,
+    color: "#e8e2d6",
+    description: "Heavyweight GOTS-certified cotton with a crew neck.",
+  },
+  {
+    id: "canvas-tote",
+    name: "Waxed Canvas Tote",
+    category: "Accessories",
+    price: 60,
+    color: "#6b7a4b",
+    description: "Water-resistant tote with leather handles and an inner pocket.",
+  },
+  {
+    id: "pleated-skirt",
+    name: "Pleated Midi Skirt",
+    category: "Women",
+    price: 98,
+    color: "#5b3f63",
+    description: "Sunray-pleated skirt in a fluid crepe with an elasticated waist.",
+  },
+];
