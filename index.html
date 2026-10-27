@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#1E88C4">
+<title>Meeting Room Reservation</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  :root{
+    --bg:#f4f7fa; --card:#ffffff; --ink:#2b2f36; --muted:#6b7280;
+    --line:#e3e8ee; --brand:#1E88C4; --brand-d:#155f8a; --brand-l:#dcecf8;
+    --danger:#dc2626; --danger-bg:#fef2f2; --ok:#16a34a; --ok-bg:#f0fdf4;
+    --warn:#b45309; --warn-bg:#fffbeb;
+    --r1:#1E9BD7; --r2:#6C7BC4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans Arabic",Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  [hidden]{display:none !important}
+  .wrap{max-width:720px;margin:0 auto;padding:16px 16px 60px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+  .logo{width:34px;height:34px;border-radius:9px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:18px}
+  .logo-img{height:60px;width:auto;display:block;background:#fff;border-radius:10px;padding:4px 9px}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+  .lang button{border:0;background:transparent;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--muted);font-size:13px}
+  .lang button.on{background:var(--brand);color:#fff}
+  .demo-banner{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:10px 14px;font-size:13px;margin-bottom:16px;display:none}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+  label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+  input,select,textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;
+    font-size:16px;font-family:inherit;background:#fff;color:var(--ink);
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-l)}
+  textarea{min-height:60px;resize:vertical}
+  .row{display:flex;gap:12px}
+  .row>div{flex:1}
+  .rooms{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  .room{border:2px solid var(--line);border-radius:13px;padding:14px;cursor:pointer;text-align:center;transition:.12s;background:#fff}
+  .room .dot,.tl-name .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-inline-end:6px}
+  .room.sel{border-color:var(--brand);background:var(--brand-l)}
+  .room .nm{font-weight:800;font-size:15px}
+  .room .cap{color:var(--muted);font-size:12px;margin-top:2px}
+  .btn{
+    width:100%;margin-top:20px;padding:15px;border:0;border-radius:12px;background:var(--brand);
+    color:#fff;font-weight:800;font-size:17px;cursor:pointer;transition:.12s;
+  }
+  .btn:hover{background:var(--brand-d)}
+  .btn:disabled{opacity:.55;cursor:not-allowed}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:var(--bg)}
+  .btn.danger{background:var(--danger)}
+  .btn.danger:hover{background:#b91c1c}
+  .btns{display:flex;gap:12px}
+  .btns .btn{margin-top:16px}
+  .linkbtn{border:0;background:none;padding:0;margin-inline-start:6px;color:inherit;font:inherit;font-weight:800;text-decoration:underline;cursor:pointer}
+  .msg{border-radius:12px;padding:13px 15px;margin-top:16px;font-weight:600;font-size:14px;display:none}
+  .msg.ok{background:var(--ok-bg);color:var(--ok);border:1px solid #bbf7d0;display:block}
+  .msg.err{background:var(--danger-bg);color:var(--danger);border:1px solid #fecaca;display:block}
+  .msg.info{background:var(--bg);color:var(--ink);border:1px solid var(--line);display:block}
+  .sec-title{font-weight:800;font-size:16px;margin:4px 0 12px;display:flex;align-items:center;gap:8px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .date-head{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+  .daychips{display:flex;gap:6px;margin-bottom:6px}
+  .daychips .chip{padding:4px 11px;font-size:12px}
+  .bk{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .bk:last-child{border-bottom:0}
+  .bk .bar{width:5px;align-self:stretch;border-radius:3px;min-height:38px}
+  .bk .t{font-weight:800;font-size:15px;white-space:nowrap}
+  .bk .who{font-size:13px;color:var(--muted)}
+  .bk .rm{font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;margin-inline-start:auto;white-space:nowrap}
+  .empty{color:var(--muted);text-align:center;padding:22px;font-size:14px}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-inline-end:6px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:10px}
+  /* Planning des salles */
+  .tl{margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:13px;background:#fbfcfd}
+  .tl-title{font-weight:800;font-size:13px;margin-bottom:2px}
+  .tl-hint{color:var(--muted);font-size:12px;margin-bottom:4px}
+  .tl-name{font-size:12px;font-weight:700;color:var(--muted);margin:8px 0 4px}
+  .tl-room.sel .tl-name{color:var(--ink)}
+  .tl-track{position:relative;height:34px;background:#eef2f6;border-radius:8px;cursor:pointer;overflow:hidden;touch-action:manipulation}
+  .tl-room.sel .tl-track{box-shadow:inset 0 0 0 2px var(--brand)}
+  .tl-tick{position:absolute;top:0;bottom:0;width:1px;background:#dde3ea;pointer-events:none}
+  .tl-past{position:absolute;top:0;bottom:0;background:rgba(107,114,128,.14);pointer-events:none}
+  .tl-busy{position:absolute;top:0;bottom:0;border-radius:6px;cursor:default}
+  .tl-pick{position:absolute;top:3px;bottom:3px;border:2px dashed var(--brand);border-radius:6px;background:rgba(30,136,196,.14);pointer-events:none}
+  .tl-pick.bad{border-color:var(--danger);background:rgba(220,38,38,.14)}
+  .tl-now{position:absolute;top:0;bottom:0;width:2px;background:var(--danger);pointer-events:none}
+  .tl-axis{position:relative;height:16px;margin-top:3px;font-size:11px;color:var(--muted)}
+  .tl-axis span{position:absolute;top:0;transform:translateX(-50%)}
+  [dir=rtl] .tl-axis span{transform:translateX(50%)}
+  .tl-info{font-size:12px;color:var(--ink);margin-top:6px}
+  .tl-info:empty{display:none}
+  .tl-warn{background:var(--warn-bg);color:var(--warn);border:1px solid #fde68a;border-radius:10px;padding:8px 11px;font-size:13px;font-weight:600;margin-top:8px}
+  .cx-details{background:var(--bg);border-radius:12px;padding:12px 14px;margin:12px 0 4px;font-size:14px}
+  .cx-details b{font-size:16px}
+  @media(max-width:480px){.row{flex-direction:column;gap:0}.wrap{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="logo-img" src="data:image/jpeg;base64,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" alt="Impact"></div>
+    <div class="lang">
+      <button id="btnAr" class="on" onclick="setLang('ar')">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64a;&#x629;</button>
+      <button id="btnEn" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+
+  <div class="demo-banner" id="demoBanner"></div>
+
+  <!-- Cancel a booking (link from the confirmation email) -->
+  <div class="card" id="cancelCard" hidden>
+    <h1 data-i="cTitle">&#x625;&#x644;&#x63a;&#x627;&#x621; &#x627;&#x644;&#x62d;&#x62c;&#x632;</h1>
+    <div id="cancelBody"></div>
+  </div>
+
+  <!-- Booking form -->
+  <div class="card" id="formCard">
+    <h1 data-i="title">&#x627;&#x62d;&#x62c;&#x632; &#x642;&#x627;&#x639;&#x629; &#x627;&#x62c;&#x62a;&#x645;&#x627;&#x639;&#x627;&#x62a;</h1>
+    <p class="sub" data-i="subtitle">&#x62f;&#x62e;&#x644; &#x628;&#x64a;&#x627;&#x646;&#x627;&#x62a;&#x643; &#x648;&#x627;&#x62e;&#x62a;&#x627;&#x631; &#x627;&#x644;&#x648;&#x642;&#x62a;. &#x647;&#x646;&#x628;&#x639;&#x62a;&#x644;&#x643; &#x62f;&#x639;&#x648;&#x629; &#x639;&#x644;&#x649; &#x627;&#x644;&#x625;&#x64a;&#x645;&#x64a;&#x644; &#x62a;&#x628;&#x644;&#x643; &#x627;&#x644;&#x642;&#x627;&#x639;&#x629; &#x639;&#x644;&#x649; &#x62a;&#x642;&#x648;&#x64a;&#x645;&#x643;.</p>
+
+    <label data-i="fName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x628;&#x627;&#x644;&#x643;&#x627;&#x645;&#x644;</label>
+    <input id="fName" autocomplete="name" placeholder="">
+
+    <label data-i="fEmail">&#x627;&#x644;&#x625;&#x64a;&#x645;&#x64a;&#x644;</label>
+    <input id="fEmail" type="email" inputmode="email" autocomplete="email" placeholder="name@company.com">
+
+    <label data-i="fRoom">&#x627;&#x644;&#x642;&#x627;&#x639;&#x629;</label>
+    <div class="rooms" id="rooms"></div>
+
+    <div class="row">
+      <div>
+        <div class="date-head">
+          <label data-i="fDate">&#x627;&#x644;&#x62a;&#x627;&#x631;&#x64a;&#x62e;</label>
+          <div class="daychips" id="dayChips"></div>
+        </div>
+        <input id="fDate" type="date">
+      </div>
+    </div>
+
+    <div class="tl" id="timeline">
+      <div class="tl-title" data-i="avTitle">&#x62c;&#x62f;&#x648;&#x644; &#x627;&#x644;&#x642;&#x627;&#x639;&#x627;&#x62a; &#x641;&#x64a; &#x627;&#x644;&#x64a;&#x648;&#x645; &#x62f;&#x647;</div>
+      <div class="tl-hint" data-i="avHint">&#x62f;&#x648;&#x633; &#x639;&#x644;&#x649; &#x645;&#x643;&#x627;&#x646; &#x641;&#x627;&#x636;&#x64a; &#x639;&#x634;&#x627;&#x646; &#x62a;&#x62e;&#x62a;&#x627;&#x631; &#x627;&#x644;&#x648;&#x642;&#x62a; &#x62f;&#x647;</div>
+      <div id="tlRooms"></div>
+      <div class="tl-info" id="tlInfo"></div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label data-i="fStart">&#x645;&#x646; &#x627;&#x644;&#x633;&#x627;&#x639;&#x629;</label>
+        <input id="fStart" type="time" step="900">
+      </div>
+      <div>
+        <label data-i="fEnd">&#x644;&#x62d;&#x62f; &#x627;&#x644;&#x633;&#x627;&#x639;&#x629;</label>
+        <input id="fEnd" type="time" step="900">
+      </div>
+    </div>
+    <div class="tl-warn" id="tlWarn" hidden data-i="warnClash"></div>
+
+    <label data-i="fPurpose">&#x627;&#x644;&#x645;&#x648;&#x636;&#x648;&#x639; / &#x627;&#x644;&#x63a;&#x631;&#x636; (&#x627;&#x62e;&#x62a;&#x64a;&#x627;&#x631;&#x64a;)</label>
+    <input id="fPurpose" placeholder="">
+
+    <button class="btn" id="submitBtn" onclick="submitBooking()" data-i="submit">&#x627;&#x62d;&#x62c;&#x632; &#x627;&#x644;&#x642;&#x627;&#x639;&#x629;</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <!-- Bookings list -->
+  <div class="card">
+    <div class="sec-title">&#x1f4cb; <span data-i="listTitle">&#x627;&#x644;&#x62d;&#x62c;&#x648;&#x632;&#x627;&#x62a; &#x627;&#x644;&#x642;&#x627;&#x62f;&#x645;&#x629;</span></div>
+    <div class="filters" id="filters"></div>
+    <div id="list"><div class="empty" data-i="loading">&#x628;&#x64a;&#x62d;&#x645;&#x651;&#x644;&#x2026;</div></div>
+  </div>
+
+  <div class="foot" data-i="foot">Impact &#xb7; &#x62d;&#x62c;&#x632; &#x627;&#x644;&#x642;&#x627;&#x639;&#x627;&#x62a;</div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG \u2014 modifiez ici les salles (doit correspondre \u00e0 Code.gs)
+   ============================================================ */
+var ROOMS = [
+  { id:"room1", nameAr:"\u0642\u0627\u0639\u0629 \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u0627\u062a", nameEn:"Meeting Room",  cap:8,  color:"#1E9BD7" },
+  { id:"room2", nameAr:"\u0642\u0627\u0639\u0629 \u0627\u0644\u062a\u062f\u0631\u064a\u0628",    nameEn:"Training Room", cap:30, color:"#6C7BC4" }
+];
+
+// URL de l'application Web Google (D\u00e9ployer \u2192 G\u00e9rer les d\u00e9ploiements).
+// Sert quand la page est h\u00e9berg\u00e9e hors de Google (adresse courte) ;
+// ignor\u00e9e quand la page est servie par Google lui-m\u00eame.
+var API_URL = "https://script.google.com/macros/s/AKfycbymLjdKGQK97PPqaYIL-QeheHUa-nwtbVDmL6pZiSwHzyScfH0R2mM_F4bv-Kp6Dkk8Kg/exec";
+
+// Heures affich\u00e9es dans le planning des salles (d\u00e9but / fin de journ\u00e9e).
+var DAY_START = 8, DAY_END = 20;
+
+/* ============================================================
+   i18n
+   ============================================================ */
+var I18N = {
+  ar:{
+    appShort:"\u0627\u0644\u062d\u062c\u0648\u0632\u0627\u062a", title:"\u0627\u062d\u062c\u0632 \u0642\u0627\u0639\u0629 \u0627\u062c\u062a\u0645\u0627\u0639\u0627\u062a",
+    subtitle:"\u062f\u062e\u0651\u0644 \u0628\u064a\u0627\u0646\u0627\u062a\u0643 \u0648\u0627\u062e\u062a\u0627\u0631 \u0627\u0644\u0648\u0642\u062a. \u0647\u0646\u0628\u0639\u062a\u0644\u0643 \u062f\u0639\u0648\u0629 \u0639\u0644\u0649 \u0627\u0644\u0625\u064a\u0645\u064a\u0644 \u062a\u0628\u0644\u0651\u0643 \u0627\u0644\u0642\u0627\u0639\u0629 \u0639\u0644\u0649 \u062a\u0642\u0648\u064a\u0645\u0643.",
+    fName:"\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644", fEmail:"\u0627\u0644\u0625\u064a\u0645\u064a\u0644", fRoom:"\u0627\u0644\u0642\u0627\u0639\u0629", fDate:"\u0627\u0644\u062a\u0627\u0631\u064a\u062e",
+    fStart:"\u0645\u0646 \u0627\u0644\u0633\u0627\u0639\u0629", fEnd:"\u0644\u062d\u062f \u0627\u0644\u0633\u0627\u0639\u0629", fPurpose:"\u0627\u0644\u0645\u0648\u0636\u0648\u0639 / \u0627\u0644\u063a\u0631\u0636 (\u0627\u062e\u062a\u064a\u0627\u0631\u064a)",
+    submit:"\u0627\u062d\u062c\u0632 \u0627\u0644\u0642\u0627\u0639\u0629", listTitle:"\u0627\u0644\u062d\u062c\u0648\u0632\u0627\u062a \u0627\u0644\u0642\u0627\u062f\u0645\u0629", loading:"\u0628\u064a\u062d\u0645\u0651\u0644\u2026",
+    foot:"Impact \u00b7 \u062d\u062c\u0632 \u0627\u0644\u0642\u0627\u0639\u0627\u062a", capacity:"\u0644\u062d\u062f {n} \u0623\u0641\u0631\u0627\u062f",
+    fToday:"\u0627\u0644\u0646\u0647\u0627\u0631\u062f\u0647", fTomorrow:"\u0628\u0643\u0631\u0629", fWeek:"\u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u062f\u0647", fAll:"\u0627\u0644\u0643\u0644", fPast:"\u0627\u0644\u0641\u0627\u064a\u062a\u0629",
+    sending:"\u0628\u064a\u062d\u062c\u0632\u2026", empty:"\u0645\u0641\u064a\u0634 \u062d\u062c\u0648\u0632\u0627\u062a \u0641\u064a \u0627\u0644\u0641\u062a\u0631\u0629 \u062f\u064a",
+    okMsg:"\u062a\u0645\u0627\u0645! \u0627\u0644\u0642\u0627\u0639\u0629 \u0627\u062a\u062d\u062c\u0632\u062a. \u0628\u0635\u0651 \u0639\u0644\u0649 \u0625\u064a\u0645\u064a\u0644\u0643: \u0647\u062a\u0644\u0627\u0642\u064a \u062f\u0639\u0648\u0629 \u0627\u0644\u062a\u0642\u0648\u064a\u0645 \u0648\u0644\u064a\u0646\u0643 \u062a\u0644\u063a\u064a \u0628\u064a\u0647 \u0644\u0648 \u062d\u0627\u062c\u0629 \u0627\u062a\u063a\u064a\u0631\u062a.",
+    undo:"\u0627\u0644\u063a\u064a \u0627\u0644\u062d\u062c\u0632 \u062f\u0647",
+    errFields:"\u0644\u0648 \u0633\u0645\u062d\u062a \u0627\u0645\u0644\u0627 \u0627\u0644\u0627\u0633\u0645 \u0648\u0627\u0644\u0625\u064a\u0645\u064a\u0644 \u0648\u0627\u0644\u0648\u0642\u062a.",
+    errEmail:"\u0627\u0644\u0625\u064a\u0645\u064a\u0644 \u0645\u0634 \u0645\u0638\u0628\u0648\u0637.",
+    errTime:"\u0648\u0642\u062a \u0627\u0644\u0646\u0647\u0627\u064a\u0629 \u0644\u0627\u0632\u0645 \u064a\u0643\u0648\u0646 \u0628\u0639\u062f \u0648\u0642\u062a \u0627\u0644\u0628\u062f\u0627\u064a\u0629.",
+    errPast:"\u0645\u064a\u0646\u0641\u0639\u0634 \u062a\u062d\u062c\u0632 \u0641\u064a \u0648\u0642\u062a \u0641\u0627\u062a.",
+    errRoom:"\u0627\u062e\u062a\u0627\u0631 \u0642\u0627\u0639\u0629 \u0627\u0644\u0623\u0648\u0644.",
+    errClash:"\u0627\u0644\u0642\u0627\u0639\u0629 \u062f\u064a \u0645\u062d\u062c\u0648\u0632\u0629 \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u062f\u0647. \u062c\u0631\u0651\u0628 \u0648\u0642\u062a \u062a\u0627\u0646\u064a.",
+    errNet:"\u0641\u064a \u0645\u0634\u0643\u0644\u0629 \u0641\u064a \u0627\u0644\u0627\u062a\u0635\u0627\u0644. \u062d\u0627\u0648\u0644 \u062a\u0627\u0646\u064a.",
+    now:"\u062f\u0644\u0648\u0642\u062a\u064a",
+    avTitle:"\u062c\u062f\u0648\u0644 \u0627\u0644\u0642\u0627\u0639\u0627\u062a \u0641\u064a \u0627\u0644\u064a\u0648\u0645 \u062f\u0647",
+    avHint:"\u062f\u0648\u0633 \u0639\u0644\u0649 \u0645\u0643\u0627\u0646 \u0641\u0627\u0636\u064a \u0639\u0634\u0627\u0646 \u062a\u062e\u062a\u0627\u0631 \u0627\u0644\u0648\u0642\u062a \u062f\u0647",
+    warnClash:"\u0627\u0644\u0648\u0642\u062a \u0627\u0644\u0644\u064a \u0627\u062e\u062a\u0631\u062a\u0647 \u0645\u062a\u062f\u0627\u062e\u0644 \u0645\u0639 \u062d\u062c\u0632 \u062a\u0627\u0646\u064a \u0641\u064a \u0627\u0644\u0642\u0627\u0639\u0629 \u062f\u064a.",
+    cTitle:"\u0625\u0644\u063a\u0627\u0621 \u0627\u0644\u062d\u062c\u0632", cAsk:"\u0639\u0627\u064a\u0632 \u062a\u0644\u063a\u064a \u0627\u0644\u062d\u062c\u0632 \u062f\u0647\u061f \u0627\u0644\u0642\u0627\u0639\u0629 \u0647\u062a\u0628\u0642\u0649 \u0641\u0627\u0636\u064a\u0629 \u0644\u063a\u064a\u0631\u0643.",
+    cYes:"\u0623\u064a\u0648\u0647\u060c \u0627\u0644\u063a\u064a", cNo:"\u0644\u0623\u060c \u0633\u064a\u0628\u0647", cancelling:"\u0628\u064a\u0644\u063a\u064a\u2026",
+    cDone:"\u0627\u062a\u0644\u063a\u0649 \u0627\u0644\u062d\u062c\u0632. \u0627\u0644\u0642\u0627\u0639\u0629 \u0628\u0642\u062a \u0641\u0627\u0636\u064a\u0629 \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u062f\u0647.",
+    cAlready:"\u0627\u0644\u062d\u062c\u0632 \u062f\u0647 \u0627\u062a\u0644\u063a\u0649 \u0642\u0628\u0644 \u0643\u062f\u0647.",
+    cInvalid:"\u0627\u0644\u0644\u064a\u0646\u0643 \u062f\u0647 \u0645\u0634 \u0634\u063a\u0627\u0644\u060c \u0623\u0648 \u0627\u0644\u062d\u062c\u0632 \u0645\u0634 \u0645\u0648\u062c\u0648\u062f.",
+    cPast:"\u0627\u0644\u062d\u062c\u0632 \u062f\u0647 \u062e\u0644\u0635 \u062e\u0644\u0627\u0635\u060c \u0645\u064a\u0646\u0641\u0639\u0634 \u064a\u062a\u0644\u063a\u064a.",
+    bookRoom:"\u0627\u062d\u062c\u0632 \u0642\u0627\u0639\u0629"
+  },
+  en:{
+    appShort:"Bookings", title:"Book a meeting room",
+    subtitle:"Fill in your details and pick a time. We'll email you an invite that blocks the room on your calendar.",
+    fName:"Full name", fEmail:"Email", fRoom:"Room", fDate:"Date",
+    fStart:"From", fEnd:"To", fPurpose:"Subject / purpose (optional)",
+    submit:"Book the room", listTitle:"Upcoming bookings", loading:"Loading\u2026",
+    foot:"Impact \u00b7 Room booking", capacity:"Up to {n} people",
+    fToday:"Today", fTomorrow:"Tomorrow", fWeek:"This week", fAll:"All", fPast:"Past",
+    sending:"Booking\u2026", empty:"No bookings in this period",
+    okMsg:"Done! The room is booked. Check your email for the calendar invite and a link to cancel if plans change.",
+    undo:"Cancel this booking",
+    errFields:"Please fill in name, email and time.",
+    errEmail:"That email doesn't look right.",
+    errTime:"End time must be after start time.",
+    errPast:"You can't book a time in the past.",
+    errRoom:"Please pick a room first.",
+    errClash:"That room is already booked for this time. Try another slot.",
+    errNet:"Connection problem. Please try again.",
+    now:"now",
+    avTitle:"Room schedule for this day",
+    avHint:"Tap a free spot to pick that time",
+    warnClash:"The time you picked overlaps another booking in this room.",
+    cTitle:"Cancel a booking", cAsk:"Cancel this booking? The room will be free for others.",
+    cYes:"Yes, cancel it", cNo:"No, keep it", cancelling:"Cancelling\u2026",
+    cDone:"Booking cancelled. The room is free again.",
+    cAlready:"This booking was already cancelled.",
+    cInvalid:"This link doesn't work, or the booking no longer exists.",
+    cPast:"This booking is already over, so it can't be cancelled.",
+    bookRoom:"Book a room"
+  }
+};
+
+/* ============================================================
+   DATA LAYER \u2014 auto-detects environment
+   - Google Apps Script (deployed): uses google.script.run  \u2192 shared + real calendar
+   - Hosted elsewhere (short link): calls the same script via API_URL
+   - Opened locally as a file, or with ?demo=1: uses localStorage \u2192 demo mode
+   ============================================================ */
+var IS_GAS = (typeof google !== "undefined" && google.script && google.script.run);
+var QS = IS_GAS ? null : new URLSearchParams(location.search);
+var MODE = IS_GAS ? "gas"
+  : (API_URL && location.protocol !== "file:" && !QS.get("demo")) ? "api" : "demo";
+
+// Param\u00e8tres de l'URL : inject\u00e9s par Code.gs quand Google sert la page,
+// lus directement dans l'adresse sinon.
+function param(injected, name){
+  if(injected.indexOf("<?")!==0) return injected;
+  return (QS && QS.get(name)) || "";
+}
+var PRESELECT_ROOM = param("<?= preselect ?>", "room");
+var CANCEL_ID = param("<?= cancelId ?>", "cancel");
+var CANCEL_TOKEN = param("<?= cancelToken ?>", "t");
+
+function gasCall(fn, args, cb){
+  var runner = google.script.run
+    .withSuccessHandler(cb)
+    .withFailureHandler(function(){ cb({ok:false,error:"errNet"}); });
+  runner[fn].apply(runner, args);
+}
+
+function apiCall(body, cb){
+  // text/plain : requ\u00eate \u00ab simple \u00bb, sans pr\u00e9-v\u00e9rification CORS
+  fetch(API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(body)})
+    .then(function(r){ return r.json(); })
+    .then(cb, function(){ cb({ok:false,error:"errNet"}); });
+}
+
+function demoItems(){ return JSON.parse(localStorage.getItem("demo_bookings")||"[]"); }
+function demoSave(items){ localStorage.setItem("demo_bookings",JSON.stringify(items)); }
+function demoFind(id,token){ return demoItems().filter(function(b){ return String(b.id)===id && b.token===token; })[0]; }
+function demoOver(b){ return new Date(b.date+"T"+b.end) < new Date(); }
+function later(cb,res){ setTimeout(function(){ cb(res); },300); }
+
+var DataStore = {
+  // cb(items) \u2014 items = null si le chargement a \u00e9chou\u00e9
+  list:function(cb){
+    if(MODE==="gas") gasCall("getBookings",[],function(r){ cb(Array.isArray(r)?r:null); });
+    else if(MODE==="api") apiCall({action:"list"},function(r){ cb(r.ok?r.items:null); });
+    else cb(demoItems().filter(function(b){ return !b.cancelled; }));
+  },
+  create:function(p,cb){
+    if(MODE==="gas") return gasCall("createBooking",[p],cb);
+    if(MODE==="api") return apiCall({action:"create",booking:p},cb);
+    // Demo mode: check overlap locally
+    var items=demoItems();
+    var clash=items.some(function(b){
+      return !b.cancelled && b.room===p.room && b.date===p.date && !(p.end<=b.start || p.start>=b.end);
+    });
+    if(clash) return later(cb,{ok:false,error:"errClash"});
+    p.id=String(Date.now()); p.token=Math.random().toString(16).slice(2); items.push(p);
+    demoSave(items);
+    later(cb,{ok:true,id:p.id,token:p.token});
+  },
+  cancelInfo:function(id,token,cb){
+    if(MODE==="gas") return gasCall("getCancelInfo",[id,token],cb);
+    if(MODE==="api") return apiCall({action:"cancelInfo",id:id,token:token},cb);
+    var b=demoFind(id,token);
+    later(cb, b ? {ok:true,booking:b,cancelled:!!b.cancelled,past:demoOver(b)} : {ok:false,error:"cInvalid"});
+  },
+  cancel:function(id,token,cb){
+    if(MODE==="gas") return gasCall("cancelBooking",[id,token],cb);
+    if(MODE==="api") return apiCall({action:"cancel",id:id,token:token},cb);
+    var b=demoFind(id,token);
+    if(!b) return later(cb,{ok:false,error:"cInvalid"});
+    if(b.cancelled) return later(cb,{ok:true,already:true});
+    if(demoOver(b)) return later(cb,{ok:false,error:"cPast"});
+    demoSave(demoItems().map(function(x){ if(String(x.id)===id) x.cancelled=true; return x; }));
+    later(cb,{ok:true});
+  }
+};
+
+/* ============================================================
+   UI
+   ============================================================ */
+var lang = localStorage.getItem("lang") || "ar";
+// Salle pr\u00e9-s\u00e9lectionn\u00e9e via le QR code (?room=room1).
+var selectedRoom = (ROOMS.filter(function(r){return r.id===PRESELECT_ROOM;})[0] || ROOMS[0]).id;
+var filter = "week";
+var allBookings = null;      // null tant que la liste n'est pas charg\u00e9e
+var listFailed = false;
+var lastBooking = null;      // { id, token } de la derni\u00e8re r\u00e9servation (bouton \u00ab annuler \u00bb)
+var cancelState = null;      // \u00e9cran d'annulation : { view, booking }
+
+function t(k){ return (I18N[lang][k]||k); }
+
+function setLang(l){
+  lang = l; localStorage.setItem("lang", l);
+  document.documentElement.lang = l;
+  document.documentElement.dir = (l==="ar") ? "rtl" : "ltr";
+  document.getElementById("btnAr").classList.toggle("on", l==="ar");
+  document.getElementById("btnEn").classList.toggle("on", l==="en");
+  document.querySelectorAll("[data-i]").forEach(function(el){ el.textContent = t(el.getAttribute("data-i")); });
+  renderRooms(); renderDayChips(); renderTimeline(); renderFilters(); renderList(); renderCancel();
+}
+
+function roomName(r){ return lang==="ar" ? r.nameAr : r.nameEn; }
+function roomById(id){ return ROOMS.filter(function(r){return r.id===id})[0]; }
+
+function renderRooms(){
+  var c = document.getElementById("rooms"); c.innerHTML="";
+  ROOMS.forEach(function(r){
+    var d = document.createElement("div");
+    d.className = "room" + (r.id===selectedRoom?" sel":"");
+    d.onclick = function(){ selectedRoom=r.id; renderRooms(); renderTimeline(); };
+    d.innerHTML = '<div class="nm"><span class="dot" style="background:'+r.color+'"></span>'+roomName(r)+'</div>'+
+                  '<div class="cap">'+t("capacity").replace("{n}", r.cap)+'</div>';
+    c.appendChild(d);
+  });
+}
+
+function renderFilters(){
+  var defs=[["today","fToday"],["tomorrow","fTomorrow"],["week","fWeek"],["all","fAll"],["past","fPast"]];
+  var c=document.getElementById("filters"); c.innerHTML="";
+  defs.forEach(function(d){
+    var b=document.createElement("button");
+    b.className="chip"+(filter===d[0]?" on":"");
+    b.textContent=t(d[1]);
+    b.onclick=function(){ filter=d[0]; renderFilters(); renderList(); };
+    c.appendChild(b);
+  });
+}
+
+function pad(n){return (n<10?"0":"")+n;}
+function ymd(dt){return dt.getFullYear()+"-"+pad(dt.getMonth()+1)+"-"+pad(dt.getDate());}
+function toMin(hm){ var p=hm.split(":"); return parseInt(p[0],10)*60+parseInt(p[1],10); }
+function toHM(m){ return pad(Math.floor(m/60))+":"+pad(m%60); }
+function dayOffset(n){ var d=new Date(); d.setDate(d.getDate()+n); return ymd(d); }
+
+function inFilter(b){
+  var today=new Date(); today.setHours(0,0,0,0);
+  var d=new Date(b.date+"T00:00:00");
+  if(filter==="all") return d>=today;
+  if(filter==="past") return d<today;
+  if(filter==="today") return b.date===ymd(today);
+  if(filter==="tomorrow"){var tm=new Date(today);tm.setDate(tm.getDate()+1);return b.date===ymd(tm);}
+  if(filter==="week"){var wk=new Date(today);wk.setDate(wk.getDate()+7);return d>=today&&d<wk;}
+  return true;
+}
+
+function fmtDate(ds){
+  var d=new Date(ds+"T00:00:00");
+  return d.toLocaleDateString(lang==="ar"?"ar-EG":"en-GB",{weekday:"short",day:"numeric",month:"short"});
+}
+
+function renderList(){
+  var list=document.getElementById("list");
+  if(allBookings===null){
+    list.innerHTML='<div class="empty">'+t(listFailed?"errNet":"loading")+'</div>'; return;
+  }
+  var items=allBookings.filter(inFilter).sort(function(a,b){
+    var cmp=(a.date+a.start).localeCompare(b.date+b.start);
+    return filter==="past" ? -cmp : cmp; // pass\u00e9es: plus r\u00e9cente en premier
+  });
+  if(!items.length){ list.innerHTML='<div class="empty">'+t("empty")+'</div>'; return; }
+  list.innerHTML="";
+  items.forEach(function(b){
+    var r=roomById(b.room)||{color:"#999"};
+    var el=document.createElement("div"); el.className="bk";
+    el.innerHTML=
+      '<div class="bar" style="background:'+r.color+'"></div>'+
+      '<div><div class="t">'+b.start+' \u2013 '+b.end+'</div>'+
+      '<div class="who">'+fmtDate(b.date)+' \u00b7 <bdi>'+escapeHtml(b.name)+'</bdi>'+(b.purpose?' \u00b7 <bdi>'+escapeHtml(b.purpose)+'</bdi>':'')+'</div></div>'+
+      '<span class="rm" style="background:'+r.color+'22;color:'+r.color+'">'+(r.nameEn?roomName(r):escapeHtml(b.room))+'</span>';
+    list.appendChild(el);
+  });
+}
+
+/* ---------- Planning des salles (jour choisi) ---------- */
+
+function renderDayChips(){
+  var c=document.getElementById("dayChips"); c.innerHTML="";
+  var cur=document.getElementById("fDate").value;
+  [["fToday",0],["fTomorrow",1]].forEach(function(d){
+    var b=document.createElement("button");
+    var day=dayOffset(d[1]);
+    b.type="button"; b.className="chip"+(cur===day?" on":""); b.textContent=t(d[0]);
+    b.onclick=function(){ document.getElementById("fDate").value=day; onDateTimeChange(); };
+    c.appendChild(b);
+  });
+}
+
+function dayBookings(date, roomId){
+  return (allBookings||[]).filter(function(b){ return b.date===date && b.room===roomId; });
+}
+
+// Position (en %) d'une heure "HH:mm" sur la barre de la journ\u00e9e.
+function pct(min){
+  var a=DAY_START*60, z=DAY_END*60;
+  return Math.max(0, Math.min(100, (min-a)*100/(z-a)));
+}
+
+function renderTimeline(){
+  var box=document.getElementById("tlRooms");
+  var date=document.getElementById("fDate").value;
+  var start=document.getElementById("fStart").value, end=document.getElementById("fEnd").value;
+  var side=(lang==="ar")?"right":"left";
+  var today=ymd(new Date()), now=new Date(), nowMin=now.getHours()*60+now.getMinutes();
+  box.innerHTML="";
+  var clash=false;
+
+  ROOMS.forEach(function(r){
+    var wrap=document.createElement("div");
+    wrap.className="tl-room"+(r.id===selectedRoom?" sel":"");
+    var name=document.createElement("div"); name.className="tl-name";
+    name.innerHTML='<span class="dot" style="background:'+r.color+'"></span>'+roomName(r);
+    var track=document.createElement("div"); track.className="tl-track";
+    track.setAttribute("role","button");
+
+    for(var h=DAY_START+1; h<DAY_END; h++){
+      var tick=document.createElement("div"); tick.className="tl-tick";
+      tick.style[side]=pct(h*60)+"%"; track.appendChild(tick);
+    }
+    if(date===today){
+      var past=document.createElement("div"); past.className="tl-past";
+      past.style[side]="0%"; past.style.width=pct(nowMin)+"%"; track.appendChild(past);
+    }
+    var busy=dayBookings(date, r.id);
+    busy.forEach(function(b){
+      var s=toMin(b.start), e=toMin(b.end);
+      if(e<=DAY_START*60 || s>=DAY_END*60) return;
+      var el=document.createElement("div"); el.className="tl-busy";
+      el.style[side]=pct(s)+"%"; el.style.width=(pct(e)-pct(s))+"%"; el.style.background=r.color;
+      var label=b.start+" \u2013 "+b.end+" \u00b7 "+b.name+(b.purpose?" \u00b7 "+b.purpose:"");
+      el.title=label; el.setAttribute("aria-label",label);
+      el.onclick=function(ev){ ev.stopPropagation(); document.getElementById("tlInfo").textContent=roomName(r)+" \u00b7 "+label; };
+      track.appendChild(el);
+    });
+    if(r.id===selectedRoom && start && end && end>start){
+      var bad=busy.some(function(b){ return !(end<=b.start || start>=b.end); });
+      clash=bad;
+      var pk=document.createElement("div"); pk.className="tl-pick"+(bad?" bad":"");
+      pk.style[side]=pct(toMin(start))+"%"; pk.style.width=Math.max(1,pct(toMin(end))-pct(toMin(start)))+"%";
+      track.appendChild(pk);
+    }
+    if(date===today && nowMin>DAY_START*60 && nowMin<DAY_END*60){
+      var nl=document.createElement("div"); nl.className="tl-now";
+      nl.style[side]=pct(nowMin)+"%"; track.appendChild(nl);
+    }
+    track.onclick=function(ev){ pickSlot(r.id, track, ev); };
+    wrap.appendChild(name); wrap.appendChild(track);
+    box.appendChild(wrap);
+  });
+
+  var axis=document.createElement("div"); axis.className="tl-axis";
+  for(var h2=DAY_START; h2<=DAY_END; h2+=2){
+    var lb=document.createElement("span"); lb.textContent=h2;
+    lb.style[side]=pct(h2*60)+"%"; axis.appendChild(lb);
+  }
+  box.appendChild(axis);
+  document.getElementById("tlWarn").hidden=!clash;
+}
+
+// Clic sur une zone libre : choisit la salle et remplit les heures
+// (1 h, ou jusqu'\u00e0 la r\u00e9servation suivante si elle commence avant).
+function pickSlot(roomId, track, ev){
+  var rect=track.getBoundingClientRect();
+  var frac=(lang==="ar") ? (rect.right-ev.clientX)/rect.width : (ev.clientX-rect.left)/rect.width;
+  var a=DAY_START*60, z=DAY_END*60;
+  var m=Math.floor((a+frac*(z-a))/30)*30;
+  var date=document.getElementById("fDate").value;
+  if(date===ymd(new Date())){
+    var n=new Date(), nowMin=n.getHours()*60+n.getMinutes();
+    if(m<nowMin) m=Math.ceil(nowMin/15)*15;
+  }
+  var busy=dayBookings(date, roomId);
+  var inside=busy.some(function(b){ return m>=toMin(b.start) && m<toMin(b.end); });
+  if(inside || m>=z) return;
+  var e=Math.min(m+60, z);
+  busy.forEach(function(b){ var s=toMin(b.start); if(s>m && s<e) e=s; });
+  selectedRoom=roomId;
+  document.getElementById("fStart").value=toHM(m);
+  document.getElementById("fEnd").value=toHM(e);
+  document.getElementById("tlInfo").textContent="";
+  renderRooms(); renderTimeline();
+}
+
+function onDateTimeChange(){ document.getElementById("tlInfo").textContent=""; renderDayChips(); renderTimeline(); }
+
+function escapeHtml(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+
+function showMsg(text,ok,undo){
+  var m=document.getElementById("msg");
+  m.className="msg "+(ok?"ok":"err"); m.textContent=text;
+  if(undo){
+    var b=document.createElement("button"); b.className="linkbtn"; b.textContent=t("undo");
+    b.onclick=undoLast; m.appendChild(b);
+  }
+  m.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+
+function submitBooking(){
+  var name=document.getElementById("fName").value.trim();
+  var email=document.getElementById("fEmail").value.trim();
+  var date=document.getElementById("fDate").value;
+  var start=document.getElementById("fStart").value;
+  var end=document.getElementById("fEnd").value;
+  var purpose=document.getElementById("fPurpose").value.trim();
+
+  if(!selectedRoom) return showMsg(t("errRoom"),false);
+  if(!name||!email||!date||!start||!end) return showMsg(t("errFields"),false);
+  if(!validEmail(email)) return showMsg(t("errEmail"),false);
+  if(end<=start) return showMsg(t("errTime"),false);
+  var startDt=new Date(date+"T"+start);
+  if(startDt < new Date(Date.now()-60000)) return showMsg(t("errPast"),false);
+
+  var payload={name:name,email:email,room:selectedRoom,date:date,start:start,end:end,purpose:purpose};
+  var btn=document.getElementById("submitBtn");
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>'+t("sending");
+
+  DataStore.create(payload,function(res){
+    btn.disabled=false; btn.textContent=t("submit");
+    if(res.ok){
+      lastBooking = res.token ? {id:String(res.id), token:res.token} : null;
+      showMsg(t("okMsg"),true,!!lastBooking);
+      document.getElementById("fName").value="";
+      document.getElementById("fPurpose").value="";
+      loadBookings();
+    }else{
+      showMsg(t(res.error)||res.message||t("errNet"),false);
+    }
+  });
+}
+
+// Bouton \u00ab Annuler ce cr\u00e9neau \u00bb juste apr\u00e8s une r\u00e9servation.
+function undoLast(){
+  if(!lastBooking) return;
+  var b=lastBooking;
+  DataStore.cancel(b.id,b.token,function(res){
+    if(res.ok){ lastBooking=null; showMsg(t("cDone"),true); loadBookings(); }
+    else showMsg(t(res.error),false);
+  });
+}
+
+function loadBookings(){
+  DataStore.list(function(items){
+    listFailed = (items===null);
+    allBookings = items;
+    renderList(); renderTimeline();
+  });
+}
+
+/* ---------- \u00c9cran d'annulation (lien re\u00e7u par email) ---------- */
+
+function openCancel(){
+  document.getElementById("cancelCard").hidden=false;
+  document.getElementById("formCard").hidden=true;
+  cancelState={view:"loading"};
+  renderCancel();
+  DataStore.cancelInfo(CANCEL_ID, CANCEL_TOKEN, function(res){
+    if(!res.ok) cancelState={view:"msg", error:res.error||"errNet"};
+    else cancelState={view:res.cancelled?"already":(res.past?"past":"ask"), booking:res.booking};
+    renderCancel();
+  });
+}
+
+function closeCancel(){
+  document.getElementById("cancelCard").hidden=true;
+  document.getElementById("formCard").hidden=false;
+  cancelState=null;
+}
+
+function confirmCancel(){
+  cancelState.view="working"; renderCancel();
+  DataStore.cancel(CANCEL_ID, CANCEL_TOKEN, function(res){
+    if(res.ok) cancelState.view=res.already?"already":"done";
+    else cancelState={view:"msg", booking:cancelState.booking, error:res.error||"errNet"};
+    renderCancel();
+    if(res.ok) loadBookings();
+  });
+}
+
+function renderCancel(){
+  var body=document.getElementById("cancelBody");
+  if(!cancelState){ body.innerHTML=""; return; }
+  var s=cancelState, b=s.booking, h="";
+  if(s.view==="loading"){ body.innerHTML='<div class="empty">'+t("loading")+'</div>'; return; }
+  if(b){
+    var r=roomById(b.room);
+    h+='<div class="cx-details"><b>'+(r?roomName(r):escapeHtml(b.room))+'</b><br>'+
+       fmtDate(b.date)+' \u00b7 '+escapeHtml(b.start)+' \u2013 '+escapeHtml(b.end)+'<br><bdi>'+escapeHtml(b.name)+'</bdi>'+(b.purpose?' \u00b7 <bdi>'+escapeHtml(b.purpose)+'</bdi>':'')+'</div>';
+  }
+  var note={ask:"cAsk", working:"cAsk", done:"cDone", already:"cAlready", past:"cPast"}[s.view] || s.error;
+  var cls={ask:"info", working:"info", done:"ok", already:"info"}[s.view] || "err";
+  h+='<div class="msg '+cls+'">'+escapeHtml(t(note))+'</div>';
+  if(s.view==="ask" || s.view==="working"){
+    h+='<div class="btns"><button class="btn danger" id="cxYes"'+(s.view==="working"?' disabled':'')+'>'+
+       (s.view==="working"?'<span class="spin"></span>'+t("cancelling"):t("cYes"))+'</button>'+
+       '<button class="btn ghost" id="cxNo">'+t("cNo")+'</button></div>';
+  }else{
+    h+='<button class="btn ghost" id="cxNo">'+t("bookRoom")+'</button>';
+  }
+  body.innerHTML=h;
+  var y=document.getElementById("cxYes"); if(y) y.onclick=confirmCancel;
+  document.getElementById("cxNo").onclick=closeCancel;
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function init(){
+  // default date/time
+  var now=new Date();
+  document.getElementById("fDate").value=ymd(now);
+  var m=Math.ceil(now.getMinutes()/15)*15;
+  var s=new Date(now); s.setMinutes(m,0,0);
+  var e=new Date(s); e.setHours(e.getHours()+1);
+  document.getElementById("fStart").value=pad(s.getHours())+":"+pad(s.getMinutes());
+  document.getElementById("fEnd").value=pad(e.getHours())+":"+pad(e.getMinutes());
+  ["fDate","fStart","fEnd"].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener("input", onDateTimeChange);
+    el.addEventListener("change", onDateTimeChange);
+  });
+
+  if(MODE==="demo"){
+    var db=document.getElementById("demoBanner");
+    db.style.display="block";
+    db.innerHTML="\ud83e\uddea <b>Mode d\u00e9mo</b> \u2014 \u0627\u0644\u062d\u062c\u0648\u0632\u0627\u062a \u0645\u062d\u0641\u0648\u0638\u0629 \u0639\u0644\u0649 \u0627\u0644\u062c\u0647\u0627\u0632 \u062f\u0647 \u0628\u0633 \u0644\u0644\u062a\u062c\u0631\u0628\u0629. \u0644\u0645\u0627 \u0646\u0646\u0634\u0631 \u0627\u0644\u0645\u0648\u0642\u0639 \u0639\u0644\u0649 Google \u0647\u064a\u0628\u0642\u0649 \u0645\u0634\u062a\u0631\u0643 \u0644\u0644\u0643\u0644 + \u062a\u0642\u0648\u064a\u0645 \u062d\u0642\u064a\u0642\u064a.<br><span style='opacity:.8'>Demo mode \u2014 bookings are saved only on this device. Once deployed on Google, it becomes shared for everyone with real calendar invites.</span>";
+  }
+
+  setLang(lang);
+  if(CANCEL_ID && CANCEL_TOKEN) openCancel();
+  loadBookings();
+})();
+</script>
+</body>
+</html>
