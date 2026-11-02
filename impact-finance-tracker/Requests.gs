@@ -33,7 +33,7 @@ function menuApprove() {
     if (comments === null) return;
     approveCore_(row, id, num_(amountText), comments);
     SpreadsheetApp.getUi().alert('Impact Finance Tracker', id + ' approved for ' + fmtMoney_(num_(amountText), cur) +
-      '. David and Ramez have been notified.', SpreadsheetApp.getUi().ButtonSet.OK);
+      '. David and the requester have been notified.', SpreadsheetApp.getUi().ButtonSet.OK);
   });
 }
 
@@ -45,7 +45,7 @@ function menuReject() {
     var comments = ask_('Reject ' + id, 'Reason for rejection (required).', '');
     if (comments === null) return;
     rejectCore_(row, id, comments);
-    SpreadsheetApp.getUi().alert('Impact Finance Tracker', id + ' rejected. Ramez has been notified.',
+    SpreadsheetApp.getUi().alert('Impact Finance Tracker', id + ' rejected. The requester has been notified.',
       SpreadsheetApp.getUi().ButtonSet.OK);
   });
 }
@@ -55,10 +55,10 @@ function menuRequestChanges() {
     var row = selectedRegisterRow_();
     var id = str_(registerRowValues_(row)[REG.ID - 1]);
     requireRole_('APPROVER', id, 'REQUEST_CHANGES');
-    var comments = ask_('Request changes for ' + id, 'What must Ramez change? (required)', '');
+    var comments = ask_('Request changes for ' + id, 'What must the requester change? (required)', '');
     if (comments === null) return;
     requestChangesCore_(row, id, comments);
-    SpreadsheetApp.getUi().alert('Impact Finance Tracker', id + ' returned to Ramez for changes.',
+    SpreadsheetApp.getUi().alert('Impact Finance Tracker', id + ' returned to the requester for changes.',
       SpreadsheetApp.getUi().ButtonSet.OK);
   });
 }
@@ -178,10 +178,10 @@ function validateRequestValues_(v) {
 
 // ---------- Core actions ----------
 
-/** Ramez submits a new request, or resubmits one returned for changes. */
+/** A requester submits a new request, or resubmits one returned for changes. */
 function submitRequestCore_(row) {
   var before = registerRowValues_(row);
-  requireRole_('REQUESTER', str_(before[REG.ID - 1]), 'SUBMIT');
+  var requesterEmail = requireRole_('REQUESTER', str_(before[REG.ID - 1]), 'SUBMIT');
   var status = str_(before[REG.STATUS - 1]) || STATUS.DRAFT;
   if (status !== STATUS.DRAFT && status !== STATUS.CHANGES) {
     throw new Error('Only Draft or Changes Requested requests can be submitted. Current status: ' + status + '.');
@@ -202,7 +202,7 @@ function submitRequestCore_(row) {
     setRegisterCells_(row, {
       ID: id,
       SUBMITTED: resubmit ? current[REG.SUBMITTED - 1] : now,
-      REQUESTER: CONFIG.PEOPLE.REQUESTER.name,
+      REQUESTER: requesterLabel_(requesterEmail),
       STATUS: STATUS.PENDING,
       APPROVED_AMOUNT: '',
       APPROVER: '',

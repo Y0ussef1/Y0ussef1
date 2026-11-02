@@ -2,7 +2,7 @@
 
 A request, approval and payment tracker for internal disbursements.
 
-- **Ramez George** (requester) submits requests.
+- **Ramez George and Marina Bahgat** (requesters, same access) submit requests.
 - **Peter George** (approver) approves, rejects or requests changes.
 - **David Nashaat** (finance) records payments, including partial ones.
 
@@ -73,6 +73,7 @@ Event emails (submit, decision, payment) are sent directly by the menu action th
 Share the spreadsheet (**Share**) with these three accounts as **Editor**:
 
 - `ramez.george@impact-org.com`
+- `marina.bahgat@impact-org.com`
 - `p.george@impactcommunitydevelopment.com`
 - `david.nashaat@impactcommunitydevelopment.com`
 

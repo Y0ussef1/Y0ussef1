@@ -40,7 +40,7 @@ Read this before you rely on the tracker for real money.
 
 | Person | Sheet access | Menu actions they should use |
 |---|---|---|
-| Ramez | Editor | Submit, Cancel own drafts/pending |
+| Ramez and Marina | Editor | Submit, resubmit, cancel own drafts/pending |
 | Peter | Editor | Approve, Reject, Request Changes, Amend, Cancel approved |
 | David | Editor | Record Payment |
 | Administrator (owner) | Owner | Setup, Triggers, Validation, Test copy |

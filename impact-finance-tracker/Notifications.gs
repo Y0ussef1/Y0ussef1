@@ -32,8 +32,8 @@ function notifyDecision_(id, v, decision) {
   var action = decision === STATUS.CHANGES
     ? 'Please update the request and resubmit it (Impact Finance Tracker > Submit Selected Request).'
     : '';
-  sendMail_(CONFIG.PEOPLE.REQUESTER.email, id + ' is ' + decision.toLowerCase(),
-    'Hello ' + CONFIG.PEOPLE.REQUESTER.name + ',\n\nDecision: ' + decision + extra +
+  sendMail_(requesterEmailFor_(v), id + ' is ' + decision.toLowerCase(),
+    'Hello,\n\nDecision: ' + decision + extra +
     '\nComments: ' + (str_(v[REG.COMMENTS - 1]) || 'none') + '\n\n' + action + '\n\n' + requestSummary_(v));
 }
 
@@ -46,8 +46,9 @@ function notifyFinanceReady_(id, v) {
 }
 
 function notifyPaymentRecorded_(id, result) {
-  sendMail_(CONFIG.PEOPLE.REQUESTER.email, 'Payment recorded for ' + id,
-    'Hello ' + CONFIG.PEOPLE.REQUESTER.name + ',\n\nPayment ' + result.paymentId + ' of ' +
+  var v = registerRowValues_(findRegisterRowById_(id));
+  sendMail_(requesterEmailFor_(v), 'Payment recorded for ' + id,
+    'Hello,\n\nPayment ' + result.paymentId + ' of ' +
     fmtMoney_(result.amount, result.currency) + ' has been recorded.\n' +
     'Remaining approved balance: ' + fmtMoney_(result.remainingAfter, result.currency) +
     '\nPayment status: ' + result.paymentStatus);

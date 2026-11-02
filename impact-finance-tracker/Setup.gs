@@ -81,12 +81,12 @@ function writeSettings_() {
     'Edit dropdown values in the blue columns. Approver and finance identities are set in Config.gs, not here.', 18);
 
   headerRow_(sh, ['Team', 'Role', 'Email (set in Config.gs)'], 1);
-  sh.getRange(FIRST_ROW, 1, 3, 3).setValues([
-    [CONFIG.PEOPLE.REQUESTER.name, 'Requester', CONFIG.PEOPLE.REQUESTER.email],
-    [CONFIG.PEOPLE.APPROVER.name, 'Approver', CONFIG.PEOPLE.APPROVER.email],
-    [CONFIG.PEOPLE.FINANCE.name, 'Finance / payer', CONFIG.PEOPLE.FINANCE.email]
-  ]);
-  protectOnce_(sh.getRange(FIRST_ROW, 1, 3, 3), 'Impact Finance Tracker: team identities are set in code');
+  // Team block: one row per requester, then approver and finance (rows 5 to 8 with two requesters).
+  var team = CONFIG.REQUESTERS.map(function (p) { return [p.name, 'Requester', p.email]; });
+  team.push([CONFIG.PEOPLE.APPROVER.name, 'Approver', CONFIG.PEOPLE.APPROVER.email]);
+  team.push([CONFIG.PEOPLE.FINANCE.name, 'Finance / payer', CONFIG.PEOPLE.FINANCE.email]);
+  sh.getRange(FIRST_ROW, 1, team.length, 3).setValues(team);
+  protectOnce_(sh.getRange(FIRST_ROW, 1, team.length, 3), 'Impact Finance Tracker: team identities are set in code');
 
   var lists = [
     { col: 5, header: 'Expense Categories', name: LIST_NAMES.CATEGORIES, values: DEFAULT_LISTS.CATEGORIES },
@@ -269,7 +269,7 @@ function registerFormulas_(r) {
       'IF($L' + r + '="Pending Approval","Approver: review request",' +
       'IF($L' + r + '="Approved",IF($S' + r + '="Paid","None: fully paid",' +
       'IF($S' + r + '="Payment Issue","Finance: resolve payment issue","Finance: record payment")),"None: closed")))))',
-    '=IF($A' + r + '="","",IF(OR($L' + r + '="",$L' + r + '="Draft",$L' + r + '="Changes Requested"),"Ramez George",' +
+    '=IF($A' + r + '="","",IF(OR($L' + r + '="",$L' + r + '="Draft",$L' + r + '="Changes Requested"),"Requester",' +
       'IF($L' + r + '="Pending Approval","Peter George",' +
       'IF(AND($L' + r + '="Approved",$S' + r + '<>"Paid"),"David Nashaat","-"))))'
   ];
@@ -280,7 +280,7 @@ function buildRegister_() {
   var cols = REG_HEADERS.length;
   var n = CONFIG.MAX_ROWS - FIRST_ROW + 1;
   banner_(sh, 'REQUEST REGISTER',
-    'Ramez fills the teal-header columns. Peter and David act through the Impact Finance Tracker menu. Slate-header columns are calculated or script-managed.', cols);
+    'Requesters (Ramez, Marina) fill the teal-header columns. Peter and David act through the Impact Finance Tracker menu. Slate-header columns are calculated or script-managed.', cols);
   headerRow_(sh, REG_HEADERS, 1);
 
   var formulas = [];

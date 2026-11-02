@@ -12,6 +12,11 @@ var CONFIG = {
     APPROVER: { name: 'Peter George', email: 'p.george@impactcommunitydevelopment.com' },
     FINANCE: { name: 'David Nashaat', email: 'david.nashaat@impactcommunitydevelopment.com' }
   },
+  /** Everyone who may create, submit, resubmit and cancel requests. Same access. */
+  REQUESTERS: [
+    { name: 'Ramez George', email: 'ramez.george@impact-org.com' },
+    { name: 'Marina Bahgat', email: 'marina.bahgat@impact-org.com' }
+  ],
   REMINDER_HOUR: 8, // hour of day (in TIMEZONE) for the daily reminder trigger
   MAX_ROWS: 2000    // formula capacity of the register, queue and payment ledger
 };

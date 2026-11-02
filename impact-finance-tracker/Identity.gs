@@ -20,17 +20,35 @@ function actingEmail_() {
  * Must be called OUTSIDE withLock_.
  */
 function requireRole_(role, requestId, action) {
-  var person = CONFIG.PEOPLE[role];
+  var people = role === 'REQUESTER' ? CONFIG.REQUESTERS : [CONFIG.PEOPLE[role]];
   var actual = actingEmail_();
-  if (actual === person.email.toLowerCase()) {
+  var match = people.filter(function (p) {
+    return actual !== '' && p.email.toLowerCase() === actual;
+  })[0];
+  if (match) {
     return actual;
   }
+  var names = people.map(function (p) { return p.name; }).join(' or ');
   withLock_(function () {
     appendAudit_(requestId, 'UNAUTHORIZED_ATTEMPT', action, '',
-      'Refused: account "' + (actual || 'not revealed by Google') + '" is not ' + person.name + '.', '');
+      'Refused: account "' + (actual || 'not revealed by Google') + '" is not ' + names + '.', '');
   });
-  throw new Error('Only ' + person.name + ' can ' + action.toLowerCase().replace(/_/g, ' ') +
+  throw new Error('Only ' + names + ' can ' + action.toLowerCase().replace(/_/g, ' ') +
     '. This attempt was logged.');
+}
+
+/** "Name <email>" for the requester on a register row. Used for notifications. */
+function requesterLabel_(email) {
+  var match = CONFIG.REQUESTERS.filter(function (p) {
+    return p.email.toLowerCase() === email;
+  })[0];
+  return (match ? match.name : email) + ' <' + email + '>';
+}
+
+/** Email address stored in a register row's Requester column, or the default requester. */
+function requesterEmailFor_(v) {
+  var m = /<([^>]+)>/.exec(str_(v[REG.REQUESTER - 1]));
+  return m ? m[1] : CONFIG.PEOPLE.REQUESTER.email;
 }
 
 /** Set only by runTestScenarios(), never by menu actions. Blank in normal use. */
